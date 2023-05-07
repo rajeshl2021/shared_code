@@ -1,21 +1,3 @@
-Here's a Windows batch script that should perform the same operation as the sed command you provided:
-
-@echo off
-setlocal EnableDelayedExpansion
-
-set "search=^#include <sstream>"
-set "replace=#include <limits>^&"
-
-for /f "tokens=*" %%a in ('type "test\unit\mserialize\visit.cpp" ^& break ^> "test\unit\mserialize\visit.cpp"') do (
-  set "line=%%a"
-  if "!line!" equ "!line:%search%=%!" (
-    echo !line!>>"test\unit\mserialize\visit.cpp"
-  ) else (
-    echo !replace!>>"test\unit\mserialize\visit.cpp"
-  )
-)
-
-exit /b 0
 
 
 ========================
